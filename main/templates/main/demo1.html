@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>HLILab Evaluation Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'submit.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://nowonbun.github.io/Loader/loader.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://nowonbun.github.io/Loader/loader.js"></script>
+  <style>
+    body{
+      font-size:15px;
+      font-family:'Montserrat';
+      font-weight:500;
+      color:#555;
+      padding-top:10px;
+    }
+  </style>
+  </head>
+
+<body class="w3-content" style="max-width:100%;">
+  <div style="padding-left:100px;">
+  <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-text-black" style="z-index:3;width:250px; background-color:#fff;" id="mySidebar">
+      <!--Sidebar Title    #f1f3ff-->
+      <div class="w3-container w3-display-container w3-padding-16">
+        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+        <a href="/" style="text-decoration:none;"><h3 class="w3-wide" style="padding-top:10px;"><b>HLILab<br>Evaluation<br>Demo</b></h3></a>
+      </div>
+      <div id="class1list" class="w3-bar-block w3-padding-large w3-medium">
+            <a href="/" class="w3-bar-item w3-button">Description</a>
+            <a href="{% url 'demo' %}" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Demo</a>
+      </div>
+    </nav>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-left-align" style="color:#000000"><b>Demo</b></p>
+    </header>
+    <div class="w3-container" id="class_content">
+      <p style="font-size:16px; color:#333;"><b>
+        Which of the following sentences is appropriate for a conversation?
+      </b></p>
+      <img src="{%static 'image2.jpg' %}" alt="Demo2" width="500" height="250" style="image-rendering: -webkit-optimize-contrast;">
+      <br><br>
+      <div class="quiz" id="quiz2">
+        <div class="container">
+          <form>
+            <label>
+              <input type="radio" id="2op1" name="quiz2" value="1"/>
+              <span>I went there last time, but it's the same. I don't trust doctors</span>
+            </label>
+            <label>
+              <input type="radio" id="2op2" name="quiz2" value="2"/>
+              <span>Let me take your temperature.</span>
+            </label>
+            <label>
+              <input type="radio" id="2op3" name="quiz2" value="3"/>
+              <span>Did your eye doctor prescribe you contact lenses?</span>
+            </label>
+            <label>
+              <input type="radio" id="2op4" name="quiz2" value="4"/>
+              <span>Input your answer manually</span>
+            </label>
+            <input type="text" class="input" id="inputDirect2" name="inputDirect2" autocomplete="off" placeholder="Enter your answer (English Only)"/>
+          </form>
+        </div>
+      </div>
+      <div class="results" id="result2"></div>
+      <div>
+        <button class="submit" id="submit2">Submit</button>
+        <a href="{% url 'demo' %}" style="text-decoration:none;margin-left:350px"><button class="submit" id="retry">&nbsp;Next <b>→</b></button></a>
+      </div>
+    </div>
+    <br><br><br><br>
+    <br><br><br><br>
+    <!-- End page content -->
+    </div>
+  </div>
+  <footer id="footer">
+      <div style="margin:auto;">
+        <div class="footer">
+          <p>About</p>
+          Human Language Intelligence Lab. @ SKKU<br>
+          <a href="https://hli.skku.edu/links">https://hli.skku.edu/links</a>
+        </div>
+        <div class="footer">
+          <p>Contributors</p>
+          Dongjun Kang, ehdwns2356@g.skku.edu<br>
+          Hyejoon Jang, iris99hj@g.skku.edu
+        </div>
+        <div class="footer">
+          <p>Advisor</p>
+          Prof. Jinyeong Bak, jy.bak@skku.edu<br><br>
+        </div>
+        <div class="footer" style="margin-left:80px;">
+          <img src="{%static 'skku.png' %}" alt="SKKU" width="130" height="auto" style="image-rendering: -webkit-optimize-contrast; margin-bottom:5px;"><br>
+          <img src="{%static 'super.png' %}" alt="Super" width="130" height="auto" style="image-rendering: -webkit-optimize-contrast;margin-bottom:5px;">
+        </div>
+    </div>
+  </footer>
+
+<script type="text/javascript">
+  $(function() {
+    $(document).on("keydown", "form", function(event) {
+        return event.key != "Enter";
+    });
+    $("#inputDirect2").hide();
+    $("#result2").hide();
+    $("input[name='quiz2']:radio").change(function() {
+      if(this.value == "4") {
+          $("#inputDirect2").show(300);
+          $("#inputDirect2").focus();
+      } else {
+        $("#inputDirect2").hide(300);
+      }
+    });
+
+    function showResult(btn){
+      loader.setReload(true);
+      let answer = "";
+      let num = $("input[name=quiz"+btn+"]:checked").val();
+      if(num == "4") {
+        answer = $("#inputDirect"+btn).val();
+      } else {
+        answer = $("input[name=quiz"+btn+"]:checked~span").text();
+      }
+      $.ajax({
+        type: "POST",
+        url: "{% url "submit" %}",
+        data: JSON.stringify({"quiz" : btn, "op" : num, "answer" : answer}),
+        success: function (response) {
+          loader.off();
+          const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+          score_r = 0;
+          score_b = 0;
+          if (!regExp.test(answer)) {
+            score_r = response.rouge_score;
+            score_b = response.bert_score;
+          };
+          $("#result"+btn).html(`<div style="color:#384269"><p style="margin-bottom:30px;"><b>" ${answer} "</b></p>Word-Level Score : <b>${score_r}</b>/100
+          <div class="w3-progress-container w3-round-xlarge" style="margin-bottom:12px;">
+            <div class="w3-progressbar w3-round-xlarge" id="progressbar_r" style="width:0%">
+            </div>
+          </div>
+          Context-Level Score : <b>${score_b}</b>/100<br>
+          <div class="w3-progress-container w3-round-xlarge">
+            <div class="w3-progressbar w3-round-xlarge" id="progressbar_b" style="width:0%">
+            </div>
+          </div>
+          <br></div>`);
+          $("#result"+btn).slideDown();
+          progress(score_r, score_b);
+        },
+        error: function(){
+          loader.off();
+          $("#result"+btn).html(`<div style="color:#384269"><p><b>Input is not valid.<br>Please try again</b> 😥</p></div>`);
+          $("#result"+btn).slideDown();
+        }
+      });
+      loader.on();
+    };
+
+
+    function progress(score_r, score_b){
+      var elem = document.getElementById("progressbar_r");
+          var width = 0;
+          var id = setInterval(frame, 5);
+          function frame() {
+            if (width >= score_r) {
+              clearInterval(id);
+            } else {
+              width += 1;
+              elem.style.width = width + '%';
+            }
+          };
+          var elem1 = document.getElementById("progressbar_b");
+          var width1 = 0;
+          var id1 = setInterval(frame1, 5);
+          function frame1() {
+            if (width1 >= score_b) {
+              clearInterval(id1);
+            } else {
+              width1 += 1;
+              elem1.style.width = width1 + '%';
+            }
+          }
+      };
+
+    $("#submit2").on('click', function(){ showResult(2)});
+  });
+</script>
+
+</body>
+</html>

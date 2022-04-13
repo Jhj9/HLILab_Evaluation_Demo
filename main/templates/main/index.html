@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>HLILab Evaluation Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'submit.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://nowonbun.github.io/Loader/loader.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://nowonbun.github.io/Loader/loader.js"></script>
+  <style>
+    body{
+      font-size:15px;
+      font-family:'Montserrat';
+      font-weight:500;
+      color:#555;
+      padding-top:10px;
+    }
+  </style>
+  </head>
+<body class="w3-content" style="max-width:100%;">
+  <div style="padding-left:100px;">
+  <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-text-black" style="z-index:3;width:250px; background-color:#fff;" id="mySidebar">
+      <!--Sidebar Title    #f1f3ff-->
+      <div class="w3-container w3-display-container w3-padding-16">
+        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+        <a href="/" style="text-decoration:none;"><h3 class="w3-wide" style="padding-top:10px;"><b>HLILab<br>Evaluation<br>Demo</b></h3></a>
+      </div>
+      <div id="class1list" class="w3-bar-block w3-padding-large w3-medium">
+            <a href="/" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Description</a>
+            <a href="{% url 'demo' %}" class="w3-bar-item w3-button">Demo</a>
+      </div>
+    </nav>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-left-align" style="color:#000000"><b>Description</b></p>
+    </header>
+
+    <div class="w3-container" id="class_content">
+      <p id="description">
+        Automatically evaluating dialog response is a challenge task.
+        Because you need to be able to determine if the response to the context is appropriate, but there are so many possible responses.
+        Currently used methods include BLEU, ROUGE, and BERTSCORE.
+        Word-overlap methods such as BLEU and ROUGE indicate how overlapping the correct answer is, BERTSCORE indicates how semantically similar it is to the correct answer.
+        We created a demo to show how these metrics represent scores.
+        In this demonstration, you can select three responses to the context to check the score.
+        And you can also check the score for the input that the user responded to.
+        <br><br>
+        However, there is a limit to this metric that it is different from the actual score assigned by the actual person.
+        Therefore, to overcome these limitations, we are studying metrics that take into account several aspects such as topical, emotional, and factual consistency.
+        It has not yet been added to this demonstration because research is ongoing.
+        If you want to hear more details, please contact us through the contact below.
+      </p>
+      <a href="{% url 'demo' %}" style="text-decoration:none"><button class="submit" id="try_demo">Try Demo <b>→</b></button></a>
+
+    </div>
+    <br><br><br><br>
+    <br><br><br><br>
+
+    <!-- End page content -->
+    </div>
+  </div>
+
+<!-- Footer -->
+  <footer id="footer">
+      <div style="margin:auto;">
+        <div class="footer">
+          <p>About</p>
+          Human Language Intelligence Lab. @ SKKU<br>
+          <a href="https://hli.skku.edu/links">https://hli.skku.edu/links</a>
+        </div>
+        <div class="footer">
+          <p>Contributors</p>
+          Dongjun Kang, ehdwns2356@g.skku.edu<br>
+          Hyejoon Jang, iris99hj@g.skku.edu
+        </div>
+        <div class="footer">
+          <p>Advisor</p>
+          Prof. Jinyeong Bak, jy.bak@skku.edu<br><br>
+        </div>
+        <div class="footer" style="margin-left:80px;">
+          <img src="{%static 'skku.png' %}" alt="SKKU" width="130" height="auto" style="image-rendering: -webkit-optimize-contrast; margin-bottom:5px;"><br>
+          <img src="{%static 'super.png' %}" alt="Super" width="130" height="auto" style="image-rendering: -webkit-optimize-contrast;margin-bottom:5px;">
+        </div>
+    </div>
+  </footer>
+</body>
+</html>

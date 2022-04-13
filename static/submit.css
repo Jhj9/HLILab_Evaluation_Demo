@@ -1,0 +1,140 @@
+.question{
+	font-weight: 500;
+	margin: 10px 0 10px 0;
+}
+.answers {
+  margin-bottom: 20px;
+}
+.answers label{
+	margin: 10px 0 10px 0;
+  display: block;
+}
+.submit{
+    width:140px;
+    height:42px;
+	font-size: 16px;
+	background-color: #004fff;
+	color: #fff;
+	border: none;
+	border-radius: 50px;
+	padding: 8px 20px;
+	cursor: pointer;
+    margin: 20px 0 0 0;
+    box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+    transition:0.3s;
+}
+.submit:focus{
+    outline:0;
+}
+.submit:hover{
+	background-color: rgba(0, 79, 255, 0.9);
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(0,79,255,0.6);
+}
+/*#279;#38a;#00005c;4c4c8c*/
+#retry{
+    background-color: #fff;
+	color: #004fff;
+	border: 2px solid #004fff;
+}
+#try_demo {
+    width:160px;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.15em;
+}
+label input {
+  position: absolute;
+  left: -9999px;
+}
+label input:checked + span {
+  background-color: #f1f4ff;
+}
+label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.2375em rgba(0,79,255,0.9);
+}
+label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+}
+label span:hover {
+  background-color: #f1f4ff;
+}
+label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #9999;
+}
+
+.results {
+  height: 190px;
+  width: 650px;
+  background-color: #f1f4ff;
+  border-radius:10px;
+  padding: 5px 0 0 20px;
+}
+
+input[type="text"] {
+  width: 650px;
+  height: 2.4em;
+  padding: 0 0 0 10px;
+  border: 2px solid rgba(0,79,255,0.3);
+  border-radius: 50px;
+  margin: 8px 0 16px 0;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid rgba(0,79,255,0.9);
+  border: none;
+}
+
+#description {
+  width: 650px;
+}
+
+#footer {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: 120px;
+  font-size: 10px;
+  background-color: #f1f3f5;
+  text-align:center;
+  z-index: 100;
+  padding: 10px 0;
+}
+
+.footer {
+  display: inline-block;
+  margin: 0 10px;
+  text-align: left;
+}
+.footer p{
+  font-size:14px;
+}
+
+.w3-progress-container{width:60%;height:0.6em;position:relative;background-color:#586185}
+.w3-progressbar{background-color:#ffbf18;height:100%;position:absolute;
+    line-height:inherit}
+.w3-round-xlarge{border-radius:16px!important}
