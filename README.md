@@ -7,8 +7,7 @@ Pycharm
 
 1) Get from VCS로 시작하기
 
-2)
-  https://github.com/Jhj9/HLILab_Evaluation_Demo.git
+2) https://github.com/Jhj9/HLILab_Evaluation_Demo.git
 입력해서 clone
 
 3) Terminal에
@@ -18,12 +17,10 @@ Pycharm
   pip install bert_score
 입력
 
-4)
-  python manage.py runserver
+4) python manage.py runserver
 입력하면 실행됨
 
-5)
-Terminal에 뜨는
+5) Terminal에 뜨는
   http://127.0.0.1:8000/
 클릭해서 웹페이지 실행
 
