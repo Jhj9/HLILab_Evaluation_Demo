@@ -7,23 +7,23 @@ Pycharm
 
 1) Get from VCS로 시작하기
 
-2) https://github.com/Jhj9/HLILab_Evaluation_Demo.git
-입력해서 clone
+2) https://github.com/Jhj9/HLILab_Evaluation_Demo.git <br>
+입력해서 clone<br>
 
-3) Terminal에
-  pip install django
-  pip install rouge
-  pip install datasets
-  pip install bert_score
+3) Terminal에<br> 
+  pip install django <br>
+  pip install rouge <br>
+  pip install datasets <br>
+  pip install bert_score <br>
 입력
 
-4) python manage.py runserver
+4) python manage.py runserver <br>
 입력하면 실행됨
 
-5) Terminal에 뜨는
-  http://127.0.0.1:8000/
+5) Terminal에 뜨는 <br>
+  http://127.0.0.1:8000/ <br>
 클릭해서 웹페이지 실행
 
 +)
-  - 페이지 확대해서 글 중간에 맞추기
+  - 페이지 확대해서 글 중간에 맞추기 <br>
   - 직접입력 처음 실행하면 오래 걸리므로 미리 해 놓기
