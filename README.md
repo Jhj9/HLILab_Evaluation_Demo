@@ -17,7 +17,8 @@ Pycharm
   pip install bert_score <br>
 입력
 
-4) python manage.py runserver <br>
+4) Terminal에  
+  python manage.py runserver <br>
 입력하면 실행됨
 
 5) Terminal에 뜨는 <br>
